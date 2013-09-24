@@ -23,6 +23,13 @@ function configure_ruby()
 {
 	log "Configuring ruby $RUBY_VERSION ..."
 
+  # Run autoconf first if there were any patches applied
+  if [ ${#PATCHES[@]} != 0 ]; then
+    log "Running autoconf"
+    autoconf
+  fi
+
+  log "Running ./configure"
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
 		./configure --prefix="$INSTALL_DIR" \
 			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm):$(brew --prefix libffi)" \
