@@ -5,7 +5,7 @@ class RubyInstall < Formula
   url 'https://github.com/postmodern/ruby-install/archive/v0.3.1.tar.gz'
   sha1 'e7e8a8b7e7138c6d364367a161dbb5a0a2bceda8'
 
-  head 'https://github.com/postmodern/ruby-install.git'
+  head 'https://github.com/caius/ruby-install.git', :branch => "autoconf-when-patching"
 
   def install
     system 'make', 'install', "PREFIX=#{prefix}"
